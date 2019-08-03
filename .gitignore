@@ -1,1 +1,7 @@
 node_modules/
+/index.js
+/index.js.flow
+/index.js.map
+/proxyEntendObject.js
+/proxyEntendObject.js.flow
+/proxyEntendObject.js.map
