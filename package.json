@@ -19,19 +19,7 @@
     "bs:build": "bsb -make-world",
     "bs:clean": "bsb -clean-world"
   },
-  "dependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.1.2",
-    "@babel/node": "^7.0.0",
-    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
-    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.4.4",
-    "@babel/plugin-proposal-export-namespace-from": "^7.5.2",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/preset-flow": "^7.0.0",
-    "core-js": "3",
-    "esm": "^3.2.25"
-  },
+  "dependencies": {},
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
   },
@@ -44,6 +32,17 @@
     "testURL": "http://localhost/"
   },
   "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.4.4",
+    "@babel/plugin-proposal-export-namespace-from": "^7.5.2",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-flow": "^7.0.0",
+    "core-js": "3",
+    "esm": "^3.2.25",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^8.2.6",
     "babel-jest": "^23.4.2",
