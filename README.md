@@ -9,7 +9,7 @@ import privatize, { lockpick } from "proxy-private-fields";
 
 const object = {
   "@private a": 1,
-  b: 2
+  b: 2,
 };
 
 const privatized = privatize(object);
@@ -23,24 +23,24 @@ As we can see, the privatized object blocks access to fields which have been ann
 ```javascript
 const object1 = {
   "myOwnPrefix a": 1,
-  b: 2
+  b: 2,
 };
 
 const object2 = {
   c: 3,
-  d: 4
+  d: 4,
 };
 
 const privateFields = ["c"];
 
 const privatizedWithCustomRegExp = privatize(object1, {
-  regexp: /^myOwnPrefix/
+  regexp: /^myOwnPrefix/,
 });
 
 const privatizedWithCustomHandler = privatize(object2, {
-  handler: object => {
-    return privateFields.map(el => [el, el]);
-  }
+  handler: (object) => {
+    return privateFields.map((el) => [el, el]);
+  },
 });
 
 console.log(privatizedWithCustomRegExp.a); // undefined
@@ -61,12 +61,13 @@ const object = {
   method() {
     this.a = 3;
     this.b = 4;
-  }
+    console.log(this.a, this.b);
+  },
 };
 
 const privatized = privatize(object);
 
-privatized.method();
+privatized.method(); // 3 4
 
 console.log(privatized.a); // undefined
 console.log(privatized.b); // 4
@@ -85,7 +86,7 @@ Bear in mind that using the `lockpick` creates a new reference. This is of cours
 ```javascript
 const object = {
   "@private a": 1,
-  b: 2
+  b: 2,
 };
 
 const privatized = privatize(object, { newReferenceOnLockpick: false });
@@ -103,7 +104,7 @@ The last thing I want to talk about are `overwrite errors`:
 ```javascript
 const object = {
   "@private a": 1,
-  b: 2
+  b: 2,
 };
 
 const privatized = privatize(object);
@@ -116,13 +117,13 @@ If you want to prevent this, you can pass your own error handler:
 ```javascript
 const object = {
   "@private a": 1,
-  b: 2
+  b: 2,
 };
 
 const privatized = privatize(object, {
   overwriteHandler: (target, path, value) => {
     console.log("This field cannot be mutated");
-  }
+  },
 });
 
 privatized.a = 3; // This field cannot be mutated

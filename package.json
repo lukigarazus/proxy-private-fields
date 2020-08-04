@@ -1,9 +1,9 @@
 {
   "name": "proxy-private-fields",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "repository": "git@github.com:lukigarazus/proxy-private-fields.git",
-  "author": "Lukasz <lukasz@togedo.com>",
+  "author": "Łukasz Karczewski <ywnwa96@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "yarn prepack",
@@ -11,18 +11,11 @@
     "bundle": "webpack --mode=production",
     "bundleDev": "webpack --mode=development",
     "prepack": "yarn prepack:babel && yarn prepack:flow",
-    "prepack:babel": "babel src/ -d . -s",
-    "prepack:flow": "flow-copy-source src .",
-    "test": "jest",
-    "debug": "nodemon -e js,graphql -x 'yarn run inspect'",
-    "inspect": "kill-port --port 9230 && babel-node --inspect=0.0.0.0:9230 esm/debug.js",
-    "bs:build": "bsb -make-world",
-    "bs:clean": "bsb -clean-world"
+    "prepack:babel": "babel src/ -d dist/ -s",
+    "prepack:flow": "flow-copy-source src dist",
+    "test": "jest"
   },
   "dependencies": {},
-  "publishConfig": {
-    "registry": "https://registry.npmjs.com/"
-  },
   "jest": {
     "coverageReporters": [
       "json",
@@ -35,19 +28,18 @@
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.1.2",
     "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.5.2",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.4.4",
     "@babel/plugin-proposal-optional-chaining": "^7.0.0",
     "@babel/plugin-proposal-throw-expressions": "^7.0.0",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.4.4",
-    "@babel/plugin-proposal-export-namespace-from": "^7.5.2",
     "@babel/preset-env": "^7.0.0",
-    "@babel/preset-flow": "^7.0.0",
-    "core-js": "3",
-    "esm": "^3.2.25",
+    "@babel/preset-flow": "^7.10.4",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^8.2.6",
     "babel-jest": "^23.4.2",
     "babel-loader": "^8.0.4",
     "babel-plugin-root-import": "^6.1.0",
+    "core-js": "3",
     "eslint": "^5.4.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.0.1",
@@ -57,9 +49,10 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
-    "flow-bin": "^0.85.0",
+    "esm": "^3.2.25",
+    "flow-bin": "^0.130.0",
     "flow-copy-source": "^2.0.2",
-    "flow-typed": "^2.5.1",
+    "flow-typed": "^3.2.1",
     "jest": "^23.4.2",
     "nodemon": "^1.19.1"
   }
